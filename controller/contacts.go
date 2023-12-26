@@ -22,7 +22,10 @@ func Home(c *fiber.Ctx) error {
 
 func GetAll(c *fiber.Ctx) error {
 	ps := inimodul.GetAllContacts(config.Ulbimongoconn, "contacts")
-	return c.JSON(ps)
+	return c.JSON(fiber.Map{
+		"status": http.StatusOK,
+		"data":   ps,
+	})
 }
 
 func GetKontakID(c *fiber.Ctx) error {
