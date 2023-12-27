@@ -150,3 +150,36 @@ func DeleteKontak(c *fiber.Ctx) error {
 		"message": fmt.Sprintf("Data with id %s deleted successfully", id),
 	})
 }
+
+func Login(c *fiber.Ctx) error {
+	db := config.Ulbimongoconn
+	var user inimodel.User
+
+	if err := c.BodyParser(&user); err != nil {
+		return c.Status(http.StatusInternalServerError).JSON(fiber.Map{
+			"status":  http.StatusInternalServerError,
+			"message": err.Error(),
+		})
+	}
+
+	authenticated, err := inimodul.Login(user.Username, user.Password, db, "users")
+	if err != nil {
+		return c.Status(http.StatusInternalServerError).JSON(fiber.Map{
+			"status":  http.StatusInternalServerError,
+			"message": err.Error(),
+		})
+	}
+
+	if authenticated {
+		return c.Status(http.StatusOK).JSON(fiber.Map{
+			"status":  http.StatusOK,
+			"message": "Login successful",
+		})
+	}
+
+	// Jika login gagal
+	return c.Status(http.StatusUnauthorized).JSON(fiber.Map{
+		"status":  http.StatusUnauthorized,
+		"message": "Invalid credentials",
+	})
+}
