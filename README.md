@@ -56,3 +56,18 @@ https://ulbicontacts-59a677aa5bea.herokuapp.com/
 ```http
   DELETE /delete/{id}
 ```
+
+
+#### Login
+
+```http
+  POST /login
+```
+
+```json
+{
+  "username": "qwerty",
+  "password": "qwerty"
+}
+
+```
