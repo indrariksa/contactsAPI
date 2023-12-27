@@ -162,7 +162,7 @@ func Login(c *fiber.Ctx) error {
 		})
 	}
 
-	authenticated, err := inimodul.Login(user.Username, user.Password, db, "users")
+	authenticated, token, err := inimodul.Login(user.Username, user.Password, db, "users")
 	if err != nil {
 		return c.Status(http.StatusInternalServerError).JSON(fiber.Map{
 			"status":  http.StatusInternalServerError,
@@ -174,10 +174,10 @@ func Login(c *fiber.Ctx) error {
 		return c.Status(http.StatusOK).JSON(fiber.Map{
 			"status":  http.StatusOK,
 			"message": "Login successful",
+			"token":   token,
 		})
 	}
 
-	// Jika login gagal
 	return c.Status(http.StatusUnauthorized).JSON(fiber.Map{
 		"status":  http.StatusUnauthorized,
 		"message": "Invalid credentials",

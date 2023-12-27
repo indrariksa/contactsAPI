@@ -6,7 +6,7 @@ require (
 	github.com/aiteung/atdb v0.1.5
 	github.com/aiteung/musik v0.0.5
 	github.com/gofiber/fiber/v2 v2.51.0
-	github.com/indrariksa/be_presensi v0.0.23
+	github.com/indrariksa/be_presensi v0.0.24
 	github.com/whatsauth/whatsauth v0.2.9
 	go.mongodb.org/mongo-driver v1.13.1
 )
