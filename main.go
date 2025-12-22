@@ -1,10 +1,11 @@
 package main
 
 import (
+	"log"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/indrariksa/contactsAPI/config"
-	"log"
 
 	"github.com/aiteung/musik"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -27,7 +28,7 @@ import (
 // @schemes https http
 func main() {
 	go whatsauth.RunHub()
-	site := fiber.New(config.Iteung)
+	site := fiber.New(config.Indra)
 	site.Use(cors.New(config.Cors))
 	site.Use(logger.New())
 	url.Web(site)

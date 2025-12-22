@@ -3,10 +3,9 @@ module github.com/indrariksa/contactsAPI
 go 1.21.3
 
 require (
-	github.com/aiteung/atdb v0.1.5
 	github.com/aiteung/musik v0.0.5
 	github.com/gofiber/fiber/v2 v2.51.0
-	github.com/indrariksa/be_presensi v0.0.24
+	github.com/joho/godotenv v1.5.1
 	github.com/whatsauth/whatsauth v0.2.9
 	go.mongodb.org/mongo-driver v1.13.1
 )
@@ -16,6 +15,7 @@ require (
 	aidanwoods.dev/go-result v0.1.0 // indirect
 	filippo.io/edwards25519 v1.0.0 // indirect
 	github.com/aiteung/atapi v0.0.16 // indirect
+	github.com/aiteung/atdb v0.1.5 // indirect
 	github.com/aiteung/atmessage v0.0.27 // indirect
 	github.com/aiteung/atmodel v0.0.4 // indirect
 	github.com/andybalholm/brotli v1.0.5 // indirect
