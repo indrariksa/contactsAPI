@@ -6,7 +6,7 @@ An API built with Fiber and MongoDB.
 
 ## API Usage
 Main URL / Endpoint :
-https://ulbicontacts-59a677aa5bea.herokuapp.com/
+https://contactsapi-production.up.railway.app/
 
 #### Get all Contact
 
