@@ -13,4 +13,7 @@ func Web(page *fiber.App) {
 	page.Put("/update/:id", controller.UpdateData)
 	page.Delete("/delete/:id", controller.DeleteKontak)
 	page.Post("/login", controller.Login)
+
+	// page.Post("/insert", middleware.JWTProtected(), controller.InsertData)
+
 }

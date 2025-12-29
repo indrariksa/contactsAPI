@@ -63,17 +63,17 @@ func Login(username, password string, db *mongo.Database, col string) (loggedIn 
 	if err != nil {
 		return false, "", err
 	}
-
 	if !passwordMatched {
 		return false, "", fmt.Errorf("invalid password")
 	}
 
-	token, err = GenerateRandomString(26)
+	// JWT token
+	jwtToken, err := GenerateJWT(user.ID.Hex(), user.Username)
 	if err != nil {
 		return false, "", err
 	}
 
-	return true, token, nil
+	return true, jwtToken, nil
 }
 
 func CreateUser(db *mongo.Database, col string, username, password string) (insertedID primitive.ObjectID, err error) {
