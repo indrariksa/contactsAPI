@@ -138,6 +138,20 @@ func DeleteKontak(c *fiber.Ctx) error {
 		})
 	}
 
+	kontak, err := inimodul.GetContactsFromID(objID, config.MongoDB, "contacts")
+	if err != nil {
+		if errors.Is(err, mongo.ErrNoDocuments) {
+			return c.Status(http.StatusNotFound).JSON(fiber.Map{
+				"status":  http.StatusNotFound,
+				"message": fmt.Sprintf("No data found for id %s", id),
+			})
+		}
+		return c.Status(http.StatusInternalServerError).JSON(fiber.Map{
+			"status":  http.StatusInternalServerError,
+			"message": "Error retrieving contact data",
+		})
+	}
+
 	err = inimodul.DeleteContactsByID(objID, config.MongoDB, "contacts")
 	if err != nil {
 		return c.Status(http.StatusInternalServerError).JSON(fiber.Map{
@@ -148,7 +162,7 @@ func DeleteKontak(c *fiber.Ctx) error {
 
 	return c.Status(http.StatusOK).JSON(fiber.Map{
 		"status":  http.StatusOK,
-		"message": fmt.Sprintf("Data with id %s deleted successfully", id),
+		"message": fmt.Sprintf("Kontak '%s' berhasil dihapus.", kontak.NamaKontak),
 	})
 }
 
