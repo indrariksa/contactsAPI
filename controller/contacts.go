@@ -81,8 +81,8 @@ func InsertData(c *fiber.Ctx) error {
 			"message": err.Error(),
 		})
 	}
-	return c.Status(http.StatusOK).JSON(fiber.Map{
-		"status":      http.StatusOK,
+	return c.Status(http.StatusCreated).JSON(fiber.Map{
+		"status":      http.StatusCreated,
 		"message":     "Data berhasil disimpan.",
 		"inserted_id": insertedID,
 	})
